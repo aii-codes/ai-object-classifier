@@ -24,7 +24,9 @@ jobs:
 
       # Step 4: Run tests
       - name: Run tests
-        run: pytest --maxfail=1 --disable-warnings -q
+        run: |
+          export PYTHONPATH=$(pwd)
+          pytest --maxfail=1 --disable-warnings -q
 
       # Step 5: Lint & format check
       - name: Lint
