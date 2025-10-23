@@ -1,0 +1,9 @@
+venv/
+__pycache__/
+*.pyc
+.env
+models/
+*.h5
+*.pth
+.DS_Store
+docker-compose.override.yml
