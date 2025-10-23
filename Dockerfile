@@ -6,7 +6,7 @@ WORKDIR /app
 
 # Copy dependencies list and install them
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --default-timeout=100 --retries=5 --no-cache-dir -r requirements.txt
 
 # Copy the rest of the project files
 COPY . .
