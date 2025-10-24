@@ -3,27 +3,30 @@ name: Deploy to Hugging Face Space
 on:
   push:
     branches:
-      - main  # Change to 'master' if that's your main branch
+      - main   # change if your default branch is different
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout repo
         uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: '3.10'
 
-      - name: Install Hugging Face Hub
+      - name: Install latest Hugging Face Hub CLI
         run: pip install --upgrade "huggingface_hub[cli]"
 
-      - name: Deploy to Hugging Face Space
+      - name: Push to Hugging Face Space
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           echo "$HF_TOKEN" | hf auth login --token
-          hf api upload --repo-type space --repo-id Aii-codes/ai-object-classifier --path . --commit-message "Auto-deploy from GitHub"
+          hf api upload . \
+            --repo-type space \
+            --repo-id Aii-codes/ai-object-classifier \
+            --commit-message "Auto-deploy from GitHub"
