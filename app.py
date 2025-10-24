@@ -13,10 +13,12 @@ def classify_image(image):
     arr = np.expand_dims(arr, axis=0)
     arr = tf.keras.applications.mobilenet_v2.preprocess_input(arr)
     preds = model.predict(arr)
-    decoded = tf.keras.applications.mobilenet_v2.decode_predictions(preds, top=1)[0][0]
-    label = decoded[1]
-    confidence = float(decoded[2])
-    return {label: confidence}
+    decoded = tf.keras.applications.mobilenet_v2.decode_predictions(preds, top=3)[0]
+    
+    # Format nicely for display
+    results = {label: float(confidence) for (_, label, confidence) in decoded}
+    return results
+
 
 # Gradio UI
 demo = gr.Interface(
