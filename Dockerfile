@@ -15,7 +15,7 @@ COPY . .
 ENV FLASK_ENV=production
 
 # Expose port 5000 for Flask/Gunicorn
-EXPOSE 5000
+EXPOSE 7860
 
 # Command to start the app using Gunicorn (production-grade server)
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:create_app()"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:7860", "app:create_app()"]
