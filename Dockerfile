@@ -18,4 +18,4 @@ ENV FLASK_ENV=production
 EXPOSE 5000
 
 # Command to start the app using Gunicorn (production-grade server)
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:app"]
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "app:create_app()"]
