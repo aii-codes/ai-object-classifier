@@ -4,20 +4,26 @@ import numpy as np
 from PIL import Image
 
 # Load MobileNetV2 pretrained model
-model = tf.keras.applications.MobileNetV2(weights="imagenet")
+model = tf.keras.applications.EfficientNetB0(weights="imagenet")
 
 # Preprocess + predict function
 def classify_image(image):
+    # Resize and preprocess image
     image = image.resize((224, 224))
     arr = tf.keras.preprocessing.image.img_to_array(image)
     arr = np.expand_dims(arr, axis=0)
-    arr = tf.keras.applications.mobilenet_v2.preprocess_input(arr)
-    preds = model.predict(arr)
-    decoded = tf.keras.applications.mobilenet_v2.decode_predictions(preds, top=3)[0]
+    arr = tf.keras.applications.efficientnet.preprocess_input(arr)
 
-    # Format predictions as {label: confidence}
-    results = {label: float(confidence) for (_, label, confidence) in decoded}
+    # Predict
+    preds = model.predict(arr)
+
+    # Decode top-3 predictions
+    decoded = tf.keras.applications.efficientnet.decode_predictions(preds, top=3)[0]
+
+    # Format results nicely
+    results = {label: round(float(confidence) * 100, 2) for (_, label, confidence) in decoded}
     return results
+
 
 # Gradio UI
 demo = gr.Interface(
