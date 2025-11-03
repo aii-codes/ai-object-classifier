@@ -1,9 +1,40 @@
-venv/
+# --- Python ---
 __pycache__/
-*.pyc
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+
+# --- Virtual Environment ---
+venv/
 .env
-models/
-*.h5
-*.pth
+*.env
+.env.*
+
+# --- Gradio local data ---
+.gradio/
+flagged/
+temp_*.jpg
+
+# --- Reports / Generated files ---
+*.pdf
+reports/
+*.log
+
+# --- Jupyter / temp ---
+.ipynb_checkpoints/
 .DS_Store
-docker-compose.override.yml
+
+# --- Test / coverage ---
+htmlcov/
+.coverage
+.pytest_cache/
+.cache/
+
+# --- IDE / editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
