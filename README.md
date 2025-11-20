@@ -32,11 +32,3 @@ A deep-learning powered image classifier built with **TensorFlow**, deployed on 
 ## 🚀 Live App
 
 👉 **https://huggingface.co/spaces/Aii-codes/ai-object-classifier**
-
----
-
-## 🧪 Run Locally
-
-```bash
-pip install -r requirements.txt
-streamlit run app/app.py
