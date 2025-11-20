@@ -1,3 +1,16 @@
+---
+title: AI Object Classifier
+title: Ai Object Classifier
+emoji: 🔥
+colorFrom: purple
+colorTo: pink
+sdk: docker
+app_port: 7860
+pinned: false
+license: mit
+app_port: 7860
+---
+
 # 🤖 AI Object Classifier
 
 A deep-learning powered image classifier built with **TensorFlow**, deployed on **Hugging Face Spaces**, and supporting real-time predictions.
